@@ -1,0 +1,9 @@
+{
+  "name": "realtime-voice-agent-web",
+  "private": true,
+  "type": "module",
+  "description": "Vanilla JS browser client (no build step). package.json exists so `node --check` treats files as ES modules.",
+  "scripts": {
+    "check": "node --check app.js && node --check audio/player.js && node --check audio/capture-worklet.js"
+  }
+}

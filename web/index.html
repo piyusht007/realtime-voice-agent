@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Realtime voice agent demo</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>🎙️ Realtime voice agent</h1>
+    <span id="phase" class="badge">idle</span>
+    <span id="provider" class="badge muted"></span>
+  </header>
+
+  <main>
+    <section class="panel controls">
+      <button id="connect">Start call</button>
+      <button id="hangup" disabled>Hang up</button>
+      <form id="text-form">
+        <input id="text-input" placeholder="…or type a message (e.g. where is my order 1042?)" disabled />
+        <button type="submit" disabled>Send</button>
+      </form>
+      <p class="hint">
+        Try: <em>"Where is my order 1042?"</em> → slow tool + filler,
+        <em>"Book a callback for tomorrow 10am"</em>, then <em>"I want to talk to a human"</em>.
+        Start talking while the agent speaks to barge in.
+      </p>
+    </section>
+
+    <section class="panel">
+      <h2>Conversation</h2>
+      <div id="transcript"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Events</h2>
+      <ol id="events"></ol>
+    </section>
+
+    <section class="panel">
+      <h2>Turn latency</h2>
+      <table>
+        <thead><tr><th>#</th><th>source</th><th>first audio</th><th>answer</th><th>tools</th><th>barge-in</th></tr></thead>
+        <tbody id="metrics"></tbody>
+      </table>
+    </section>
+
+    <section class="panel" id="handoff-panel" hidden>
+      <h2>Handoff summary (sent to human queue)</h2>
+      <pre id="handoff"></pre>
+    </section>
+  </main>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>
